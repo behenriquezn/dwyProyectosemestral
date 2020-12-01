@@ -1,0 +1,27 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block contenido %}
+<div class="row">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8">
+      <h2>Ingrese los datos del Contacto</h2>
+      <div>
+          <form class="form-inline" action="" method="POST">
+              {% csrf_token %}
+              <table style="margin-bottom: 3%;">
+                  {{form}}
+              </table>
+              <input type="submit" class="btn btn-success" value="Guardar" style="margin-left: 2%;">
+              <input type="reset" class="btn btn-danger" value="Limpiar" style="margin-left: 2%;">
+          </form>
+          <h6>Puedes registrarte con <a href="{% url 'social:begin' 'facebook' %}">Facebook</a></h6>
+      </div>    
+      {{ mensaje }}
+
+  </div>    
+  <div class="col-sm-2"></div>
+
+</div>
+
+
+{% endblock %}

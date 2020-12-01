@@ -1,0 +1,36 @@
+{% extends 'core/base.html' %}
+{% load static %} {% static 'core/ ' %}
+{% block contenido %}
+<section id="mision">
+    <h2>Quienes Somos</h2>
+    <div class="contenedor">
+        
+        <article>
+            <img src="{% static 'core/img/015-employee.png' %}" alt=""> 
+            <p><h2>Quienes Somos</h2></p> 
+            <p><h3>Somos una empresa en la cual se dedicara exclusivamente en el lavado</h3></p> 
+            <p><h3> de tu auto entregando el mejor servicio</h3></p>
+        </article>
+
+        <article>
+            <img src="{% static 'core/img/024-eco-friendly.png' %}" alt="">
+            <p><h2>Misión</h2></p>
+            <p><h3>Nuestro objetivo es brindarle a usted un servicio de calidad</h3></p> 
+            <p><h3> con el cual se sienta satisfecho y se sienta dispuesto</h3></p> 
+            <p><h3> evaluar nuestro servicio con el mejor de los puntajes.</h3></p>
+            </h3></p>
+        </article>
+
+        <article>
+            <img src="{% static 'core/img/023-car.png' %}" alt="">
+            <p><h2>Visión</h2></p>
+            <p><h3>Nuestra Vision es estar presente para cuando usted lo requiera, </h3></p> 
+            <p><h3> siempre dispuesto a entregarle el mejor de los servicios</h3></p> 
+            <p><h3> para tener un entorno grato y confortable.</h3></p>
+        </article>
+       
+
+    </div>
+
+</section>
+{% endblock %}

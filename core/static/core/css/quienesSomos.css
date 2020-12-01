@@ -1,0 +1,22 @@
+#mision h1{
+    text-align: center;
+
+}
+#mision h2{
+    text-align: center;
+}
+
+#mision h3{
+    text-align: center;
+}
+
+#mision .contenedor {
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background-color: rgb(28, 136, 136);
+    padding: 15px;
+    color: white;
+}
+

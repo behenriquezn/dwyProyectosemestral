@@ -1,0 +1,44 @@
+#servicios h1{
+    text-align: center;
+    color: rgb(28, 136, 136); 
+}
+
+#servicios  h3{
+    color: black;
+    text-align: center;
+    
+}
+
+#servicios h4{
+    text-align: center;
+}
+
+#servicios p{
+    
+    text-align: center;
+    background-color: rgb(28, 136, 136);
+    padding: 3px;
+    color: white;
+}
+
+
+
+#servicios .contenedor{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap
+}
+
+
+#servicios .contenedor img{
+    width: 250px;
+    height: 250px;
+}
+
+#servicios article{
+    margin: 10px;
+}
+
+#servicios .contenedor img:hover{
+    transform: scale(1.1)
+}

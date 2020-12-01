@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+{% load static %} 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarWashington</title>
+    <link rel="stylesheet" href="{% static 'core\css\bootstrap.css' %}">
+    {% load pwa %}
+
+    {% progressive_web_app_meta %}
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-messaging.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyADxtPow_hGRgxn2V5N9EYyCV1vQPKsc_c",
+        authDomain: "carwashington-76224.firebaseapp.com",
+        databaseURL: "https://carwashington-76224.firebaseio.com",
+        projectId: "carwashington-76224",
+        storageBucket: "carwashington-76224.appspot.com",
+        messagingSenderId: "90284256836",
+        appId: "1:90284256836:web:1efccbc19366a44ac15611",
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      //////////////////////////////////////////
+      let messaging = firebase.messaging();
+
+      navigator.serviceWorker
+      .register('serviceworker.js')
+      .then(function(register){
+          messaging.useServiceWorker(register)
+          // Solicitar permisos para recibir notificaciones
+          messaging.requestPermission()
+          .then(function(){
+            console.log('El usuario acepto recibir notificaciones')
+            // crear un token 
+            return messaging.getToken();
+          })
+          .then(function(token){
+             // podemos ver el token de seguridad
+             console.log(token);
+             // Enviar el token a la view para ser almacenado
+             fetch('guardar-token/',{
+               method:'post',
+               headers:{
+                 'Content-Type':'application/json',
+                 'Accept':'application/json'
+               },
+               body:JSON.stringify({
+                 'token': token
+               })             
+          })
+          .catch(function(e){
+              console.log('El usuario no desea recibir notificaciones')
+          })
+        })
+      })
+      ///////Diseño de la notificacion/////////
+      messaging.onMessage(function(payload){
+   	     let titulo=payload.notificacion.title
+   	     let opciones = {
+   	         body: playload.notificacion.body,
+   	         icon: playload.notificacion.icon
+   	     }
+   	     let mensaje = new Notification(titulo,opciones);
+    	})
+    </script>
+
+    <link rel="stylesheet" href="{% static 'core/css/estilo.css' %}">
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light ">
+            <a class="navbar-brand" href="#">CarWashington</a>
+            <button class="navbar-toggler" type="button"  data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'index' %}"> Inicio </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'galeria' %}"> Galeria </a>
+                </li>
+                <li class="nav-item">
+                <li>
+                  <a class="nav-link" href="{% url 'quienesSomos' %}">Quienes Somos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'ubicacion' %}">Ubicación</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'formulario' %}">Lista de Usuarios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'formularioInsumo' %}">Lista de Insumos</a>
+                  </li>
+                <li class="nav-item" >
+                    <a class="nav-link" href="{% url 'login' %}"> Login </a>
+                </li>
+                <li class="nav-item" >
+                  <a class="nav-link" href="{% url 'logout' %}"> Cerrar Sesión </a>
+              </li>
+              <li class="nav-item" >
+                <a class="nav-link" href="{% url 'contactoFinal' %}"> Contacto </a>
+            </li>
+                
+              </ul>
+            </div>
+          </nav>
+    </header>
+    <main>
+        <section id="banner">
+            <img src="{% static 'core/img/slider-car-splash-1087x531.jpg' %}" alt="">
+        </section>
+        {% block contenido %}
+
+        {% endblock %}
+
+    </main>
+
+    <footer>
+        <div class="contenedor">
+            <p><h1>CarWashington</h1></p>
+            <nav class="indice">
+                <a href="{% url 'index' %}">Inicio</a>
+                <a href="{% url 'galeria' %}">Galeria</a>
+                <a href="{% url 'quienesSomos' %}">Quienes Somos</a>
+                <a href="{% url 'ubicacion' %}">Ubicación</a>
+                <a href="{% url 'formulario' %}">Lista de Clientes</a>
+                <a href="{% url 'formularioInsumo' %}">Lista de Insumo</a>
+                
+                
+
+            </nav>
+
+        </div>
+    </footer>
+
+</body>
+
+</html>

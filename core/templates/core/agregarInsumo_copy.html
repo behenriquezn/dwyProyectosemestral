@@ -1,0 +1,40 @@
+{% extends 'core/base.html' %}
+{% load static %} {% static 'core/ ' %}
+{% block contenido %}}
+<div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <h1>Ingrese los datos del Insumo</h1>
+        <form class="form-inline" action="" method="POST">
+            {% csrf_token %}
+                            <td>Nombre del producto</td>
+                            <input type="text" class="form-control" name="nombreproducto" id="txtNombreProducto"
+                                placeholder="Ingrese nombre del producto" minlength="3" maxlength="120" required>
+                    </div>
+                    <div class="form-group">
+                        <td>Valor del producto</td>
+                        <input type="number" class="form-control" name="valorproducto" id="txtValorProducto"
+                            placeholder="Ingrese valor del producto" minlength="1" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <td>Stock del producto</td>
+                        <input type="number" class="form-control" name="stockproducto" id="txtStockProducto"
+                            placeholder="Ingrese stock del producto" minlength="1" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <td>Descripción del producto</td>
+                        <textarea class="form-control" name="descripcion" id="txtDescripcion" rows="3" minlength="3"
+                            maxlength="200" placeholder="Descripción opcional"></textarea>
+                    </div>
+            <input type="submit" class="btn btn-success" value="Guardar" style="margin-left: 2%;">
+            <input type="reset" class="btn btn-danger" value="Limpiar" style="margin-left: 2%;">
+        </form>
+   
+        {{ mensaje }}
+
+    </div>    
+    <div class="col-sm-2"></div>
+
+</div>
+
+{% endblock %}

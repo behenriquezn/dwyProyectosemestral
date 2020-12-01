@@ -1,0 +1,65 @@
+{% extends 'core/base.html' %}
+{% load static %} {% static 'core/ ' %}
+{% block contenido %}}
+    {% load pwa %}
+    {% progressive_web_app_meta %}
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-messaging.js"></script>
+
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyA20G2POZDmdoi_zFXDr358-Q2yM6O5zOI",
+        authDomain: "lavadodeautos-c715f.firebaseapp.com",
+        databaseURL: "https://lavadodeautos-c715f.firebaseio.com",
+        projectId: "lavadodeautos-c715f",
+        storageBucket: "lavadodeautos-c715f.appspot.com",
+        messagingSenderId: "650281567720",
+        appId: "1:650281567720:web:5f7a18ca9ad9dc1cc4105d"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      //////////////////////////////////////////
+      let messaging = firebase.messaging();
+
+      navigator.serviceWorker
+      .register('serviceworker.js')
+      .then(function(register){
+          messaging.useServiceWorker(register)
+          // Solicitar permisos para recibir notificaciones
+          messaging.requestPermission()
+          .then(function(){
+            console.log('El usuario acepto recibir notificaciones')
+          })
+          .catch(function(e){
+              console.log('El usuario no desea recibir notificaciones')
+          })
+      })
+    </script>
+<div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <h2>Ingrese los datos del Contacto</h2>
+        <div>
+            <form class="form-inline" action="" method="POST">
+                {% csrf_token %}
+                <table style="margin-bottom: 3%;">
+                    {{form}}
+                </table>
+                <input type="submit" class="btn btn-success" value="Guardar" style="margin-left: 2%;">
+                <input type="reset" class="btn btn-danger" value="Limpiar" style="margin-left: 2%;">
+            </form>
+        </div>    
+        {{ mensaje }}
+
+    </div>    
+    <div class="col-sm-2"></div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+#banner{
+    margin-top: 50px;
+    position: relative;
+}
+
+#banner img{
+    width:100%;
+    
+    
+}
+
+#banner .contenedor{
+    position: absolute;
+    top: 28%;
+    left: 40%;
+}

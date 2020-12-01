@@ -1,0 +1,41 @@
+#menu_bar{
+    display:none;
+
+}
+
+header label{
+    padding: 15px;
+    font-size: 15px;
+    cursor: pointer;   
+
+}
+
+.menu {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 40%;
+    height: 50vh; /*Tamaño maximo del dispositivo*/
+    background-color: rgb(85, 196, 196);
+    transition: all 1.2s;
+    transform: translatex(-100%); /*Se oculta*/
+}
+
+.menu a{
+    display: block;
+    color: white;
+    height: 50px;
+    text-decoration: none;
+    padding: 15px 10px;
+    border-bottom: oldlace solid 1px;
+
+}
+
+.menu a:hover{
+    background-color: oldlace;
+    transition: 1.2s;
+}
+
+#menu_bar:checked~.menu{
+    transform: translatex(0);
+}

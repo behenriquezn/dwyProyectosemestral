@@ -1,0 +1,17 @@
+#ubicacion .contenedor{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: rgb(28, 136, 136);
+    padding: 15px;
+    color: white;
+    
+}
+#ubicacion article iframe{
+    margin-left: -40%;
+}
+
+#ubicacion article img{
+    margin: auto;
+}
