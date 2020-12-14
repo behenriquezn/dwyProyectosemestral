@@ -28,8 +28,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-SOCIAL_AUTH_FACEBOOK_KEY = '3401567163225883'
-SOCIAL_AUTH_FACEBOOK_SECRET = 'c7fde3539c1a56abd9d640ce010094bc'
+SOCIAL_AUTH_FACEBOOK_KEY = '753572221909889'
+SOCIAL_AUTH_FACEBOOK_SECRET = '4f0bfec3d9afdeb642eea1e59e89661e'
 
 
 # Application definition
@@ -145,9 +145,9 @@ AUTHENTICATION_BACKENDS = (
 
 FCM_DJANGO_SETTINGS = {
      # default: _('FCM Django')
-    "APP_VERBOSE_NAME": "CarWashington",
+    "APP_VERBOSE_NAME": "ShopWashington",
      # Your firebase API KEY
-    "FCM_SERVER_KEY": "AAAAFQVcbkQ:APA91bHkRcL-GW2w3H1EnHQ-QTd0tiTC9ShWVEO1c1i8JJoSufsu_hd4sKIMzN7t3YYJS3yltEjbPU5Rm5YSm61mDAZaUhlDAk-YkkOJA_oNpU0xbjncqFZqYkudB3z2kaRVo0PzfFBt",
+    "FCM_SERVER_KEY": "AAAAwOiBz1I:APA91bG9nhBA9WhBQkKi6avH5bTXZYNeLQuRjsjvFOljZsRR37sbC5snriG9lDwlgoWcm5KIm3oIExBe9WxzXHTsJoTSTcOyZP1bu8xWH16yBpBVUs47QIYvMnmXdJnijBxdFElSOn6d",
     # true if you want to have only one active device per registered user at a time
     # default: False
     "ONE_DEVICE_PER_USER": False,

@@ -1,16 +1,15 @@
 from rest_framework import serializers
-from core.models import Insumo,ContactoFinal
-
+from core.models import Producto,Tienda
 
 # creando la clase que permite serializar el modelo
 
-class InsumoSerializer(serializers.ModelSerializer):
+class ProductosSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Insumo
-        fields = ["nombre", "precio", "descripcion","stock"]
+        model = Producto
+        fields = [ "numeroIdentificador", "nombre", "valor", "valorpresupuestado","notas","tiendanombre"]
 
 
-class ContactoFinalSerializer(serializers.ModelSerializer):
+class TiendaSerializer(serializers.ModelSerializer):
     class Meta:
-        model = ContactoFinal
-        fields = ("nombre","apellido","asunto","tipoCon","mensaje")
+        model = Tienda
+        fields = ("nombre","nombresucursal","direccion","ciudad","region")

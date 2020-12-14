@@ -23,6 +23,6 @@ urlpatterns = [
     path('', include('pwa.urls')),
 ]
 
-admin.site.site_title = "CarWashington"
+admin.site.site_title = "ShopWashington"
 admin.site.site_header = "Administración de la Pagina"
 admin.site.index_title = "Modulos de Administración"

@@ -1,28 +1,24 @@
 from django.urls import path
-from .views import index, formulario, formularioInsumo, galeria, registro, quienesSomos, ubicacion, agregarEmpleado, agregarInsumo, modificarEmpleado, modificarInsumo, eliminarEmpleado, eliminarInsumo, contactoFinal,listar_por_nombre_api,listar_por_precio_api,guardar_token
+from .views import index, registro, agregarProductos,ingresar,logout_sesion,completarlista ,listar_por_nlista,guardar_token,listaCompras,modificar ,modificar_vista,agregarTienda,eliminar
 from django.contrib.auth.views import LoginView, LogoutView
 from django.conf.urls import include
 
 urlpatterns = [
     path('', index, name="index"),
-    path('formulario/', formulario, name="formulario"),
-    path('formularioInsumo/', formularioInsumo, name="formularioInsumo"),
-    path('galeria/', galeria, name="galeria"),
     path('registro/', registro, name="registro"),
-    path('quienesSomos/', quienesSomos, name="quienesSomos"),
-    path('ubicacion/', ubicacion, name="ubicacion"),
-    path('agregarEmpleado/', agregarEmpleado, name="agregarEmpleado"),
-    path('agregarInsumo/', agregarInsumo, name="agregarInsumo"),
-    path('modificarEmpleado/<id>', modificarEmpleado, name="modificarEmpleado"),
-    path('modificarInsumo/<id>', modificarInsumo, name="modificarInsumo"),
-    path('eliminarEmpleado/<id>',eliminarEmpleado, name="eliminarEmpleado"),
-    path('eliminarInsumo/<id>',eliminarInsumo, name="eliminarInsumo"),
-    path('login/', LoginView.as_view(template_name="core/login.html"), name="login"),
-    path('logout/', LogoutView.as_view(template_name="core/logout.html"), name="logout"),
+    path('agregarProducto/', agregarProductos, name="agregarProducto"),
+    
+    path('agregarTienda/', agregarTienda, name="agregarTienda"),    
+    path('listaCompras/', listaCompras, name="listaCompras"),
+    path('modificar/', modificar, name="modificar"),
+    path('modificar_vista/<id>/',modificar_vista,name='modificarVista'),
+    path('login/', ingresar,name='login'),
+    path('logout_sesion/',logout_sesion,name='logout'),
     path('oauth/', include('social_django.urls', namespace='social')),
-    path('contactoFinal/', contactoFinal, name="contactoFinal"),
-    path("lista_nombre/",listar_por_nombre_api,name="LISTANOMBRE"),
-    path("lista_precio/",listar_por_precio_api,name='LISTAPRECIO'),
+    path('eliminar/<id>/',eliminar,name='eliminar'),
+    path('completarlista/',completarlista,name='completarlista'),
     path("guardar-token/",guardar_token,name='guardar-token'),
+    path("listar_por_nlista/",listar_por_nlista,name="productoLista"),
+
 ]
 

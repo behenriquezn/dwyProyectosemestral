@@ -1,0 +1,49 @@
+
+{% extends 'core/base.html' %}
+{% load static %} {% static 'core/ ' %}
+{% block contenido %}
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<meta charset="UTF-8">
+</head>
+    {% load pwa %}
+
+    {% progressive_web_app_meta %}
+
+    <script>
+        function ir() {
+            location.href="/listaCompras/";
+        }
+    </script>
+
+      
+
+<div id="contenidoProductos">
+    <div id="sectionProductos">
+        <div>
+            <h2>Formlario de Modificacion de Productos</h2>
+            <h2>{{msg}}</h2>
+        </div>
+
+        <div class="regProducto">
+            <div class="form-group">
+                <form action="{% url 'modificar' %}" method="POST">
+                {% csrf_token %}
+                    <td>Nombre del producto</td>
+                    <input type="text" class="form-control" value="{{producto.nombre}}" name="nombreProducto" id="txtNombreProducto"
+                        placeholder="Ingrese nombre del producto" minlength="3" maxlength="120" required >
+            </div>
+            <div class="form-group">
+                <td>Valor del producto</td>
+                <input type="number" class="form-control" value="{{producto.valor}}" name="valorProducto" id="txtValorProducto"
+                    placeholder="Ingrese valor del producto" minlength="1" min="1" required>
+            </div>        
+            <p class="buttons">
+                <input class="btn btn-danger" type="submit" value="Modificar">
+                <input class="btn btn-danger" type="button" onclick="ir()" value="Lista Compras">
+            </p>
+            </form>
+        </div>
+        
+    </div>
+{% endblock contenido %}

@@ -1,30 +1,22 @@
 from django.shortcuts import render
 
-from core.models import Insumo, ContactoFinal
-from .serializers import InsumoSerializer,ContactoFinalSerializer
+from core.models import Producto , Tienda
+from .serializers import ProductosSerializer, TiendaSerializer
 from rest_framework import generics
 # Create your views here.
 
-class InsumoViewSet(generics.ListCreateAPIView):
-    queryset = Insumo.objects.all()
-    serializer_class = InsumoSerializer
+class ProductoViewSet(generics.ListCreateAPIView):
+    queryset = Producto.objects.all()
+    serializer_class = ProductosSerializer
 
-class InsumoFiltroNombreViewSet(generics.ListAPIView):
-    serializer_class = InsumoSerializer
-    #utilizar el metodo get_queryset 
+class TiendaViewSet(generics.ListCreateAPIView):
+    queryset = Tienda.objects.all()
+    serializer_class = TiendaSerializer
+
+
+
+class ProductoFiltroListaViewSet(generics.ListAPIView):
+    serializer_class = ProductosSerializer
     def get_queryset(self):
-        #se necesita recuperar un parametro desde la url 
-        elnombre = self.kwargs['nombre']
-        return Insumo.objects.filter(nombre=elnombre)
-
-class InsumoFiltroPrecioViewSet(generics.ListAPIView):
-    serializer_class = InsumoSerializer
-    #utilizar el metodo get_queryset 
-    def get_queryset(self):
-        #se necesita recuperar un parametro desde la url 
-        elprecio = self.kwargs['precio']
-        return Insumo.objects.filter(precio=elprecio)
-
-class ContactoFinalViewSet(generics.ListCreateAPIView):
-    queryset = ContactoFinal.objects.all()
-    serializer_class = ContactoFinalSerializer
+        nlista = self.kwargs['numeroIdentificador']
+        return Producto.objects.filter(numeroIdentificador=nlista)

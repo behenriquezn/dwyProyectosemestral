@@ -41,17 +41,17 @@ importScripts('https://www.gstatic.com/firebasejs/3.9.0/firebase-messaging.js');
 
 
 
-var firebaseConfig = {
-  apiKey: "AIzaSyADxtPow_hGRgxn2V5N9EYyCV1vQPKsc_c",
-  authDomain: "carwashington-76224.firebaseapp.com",
-  databaseURL: "https://carwashington-76224.firebaseio.com",
-  projectId: "carwashington-76224",
-  storageBucket: "carwashington-76224.appspot.com",
-  messagingSenderId: "90284256836",
-  appId: "1:90284256836:web:1efccbc19366a44ac15611",
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+  
+  var firebaseConfig = {
+    apiKey: "AIzaSyCfs0yhmR3IHBT1AvksGfZTp0j4etfRY5s",
+    authDomain: "shopwashington-e56e1.firebaseapp.com",
+    projectId: "shopwashington-e56e1",
+    storageBucket: "shopwashington-e56e1.appspot.com",
+    messagingSenderId: "828534542162",
+    appId: "1:828534542162:web:342d9495c805f37a8ab48b"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
 //////////////////////////////////////////
 let messaging = firebase.messaging();
 

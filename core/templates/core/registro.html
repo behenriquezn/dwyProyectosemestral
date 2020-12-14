@@ -1,27 +1,68 @@
 {% extends 'core/base.html' %}
 {% load static %}
 {% block contenido %}
-<div class="row">
-  <div class="col-sm-2"></div>
-  <div class="col-sm-8">
-      <h2>Ingrese los datos del Contacto</h2>
-      <div>
-          <form class="form-inline" action="" method="POST">
-              {% csrf_token %}
-              <table style="margin-bottom: 3%;">
-                  {{form}}
-              </table>
-              <input type="submit" class="btn btn-success" value="Guardar" style="margin-left: 2%;">
-              <input type="reset" class="btn btn-danger" value="Limpiar" style="margin-left: 2%;">
-          </form>
-          <h6>Puedes registrarte con <a href="{% url 'social:begin' 'facebook' %}">Facebook</a></h6>
-      </div>    
-      {{ mensaje }}
+<link rel="stylesheet" href="{% static 'css/estilo.css' %}">
+<div id="section">
 
-  </div>    
-  <div class="col-sm-2"></div>
+    <div id="formRegistro">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <table>
+                <center><h1>Formulario de registro</h1></center>
+                <tr>
+                    <td>Nombre:</td>
+                    <td>
+                        <input type="text" name="txtNombre" id="txtNombre" minlength="3" maxlength="80"
+                            placeholder="Ingrese Nombre" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Apellido:</td>
+                    <td>
+                        <input type="text" name="txtApellido" id="txtApellido" minlength="3" maxlength="80"
+                            placeholder="Ingrese Apellido" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td>
+                        <input type="email" name="txtEmail" id="txtEmail" placeholder="Ingrese Email" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Nombre Usuario:</td>
+                    <td>
+                        <input type="text" name="txtUsuario" id="txtUsuario" minlength="3" maxlength="30" placeholder="Ingrese Usuario" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Contraseña:</td>
+                    <td>
+                        <input type="password" name="txtPassword1" id="txtPassword1" minlength="8" placeholder="Ingrese Password" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Repetir Contraseña:</td>
+                    <td>
+                        <input type="password" name="txtPassword2" id="txtPassword2" minlength="8" placeholder="Ingrese Password" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td coldspan="2">
+                        <center><input type="submit" class="btn btn-success" value="Registrarse"><center>
+                    </td>
 
+
+                </tr>
+                <center><div style="color: black;"><h5>{{msg}}</h5></div><center>
+            </table>
+        </form>
+    </div>
 </div>
-
+<section>
+    <div style="visibility: hidden;">
+      <h1 >ESPACIO PARA QUE EL FOOTER SE PONGA BIEN</h1>
+    </div>
+  </section>
 
 {% endblock %}

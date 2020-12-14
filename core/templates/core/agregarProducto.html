@@ -1,0 +1,70 @@
+{% extends 'core/base.html' %}
+{% load static %} {% static 'core/ ' %}
+{% block contenido %}
+
+    {% load pwa %}
+
+    {% progressive_web_app_meta %}
+
+    
+         <div id="contenidoProductos">
+            <div id="sectionProductos">
+                <div>
+                    <h2>Ingreso de productos</h2>
+        
+                </div>
+                <script>
+                    function ir() {
+                        location.href="/listaCompras/";
+                    }
+                </script>
+                <div class="regProducto">
+                    <div class="form-group">
+                        <form action="{% url 'agregarProducto'%}" method="POST">
+                        {% csrf_token %}
+                            <td>Nombre del producto</td>
+                            <input type="text" class="form-control" name="nombreproducto" id="txtNombreProducto"
+                                placeholder="Ingrese nombre del producto" minlength="3" maxlength="120" required>
+                    </div>
+                    <div class="form-group">
+                        <td>Costo real del producto</td>
+                        <input type="number" class="form-control" name="valorproducto" id="txtValorProducto"
+                            placeholder="Ingrese valor del producto" minlength="1" min="1" >
+                    </div>
+                    <div class="form-group">
+                        <td>Costo Presupuestado</td>
+                        <input type="number" class="form-control" name="valorPresupuestado" id="txtvalorPresupuestado"
+                            placeholder="Ingrese costo presupuestado" minlength="1" min="0" >
+                    </div>
+                    <div class="form-group">
+                        <td>Tienda</td>
+                        <select class="form-control" id="tiendanombre" name="tiendanombre" required>
+                        <option value="Lider">Lider</option>
+                        <option value="DonPepe">DonPepe</option>
+                        <option value="SantaIsabel">SantaIsabel</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <td>Numero de lista</td>
+                        <input type="number" class="form-control" name="nlistaproducto" id="txtnListaproducto"
+                            placeholder="Ingrese numero de lista del producto" minlength="1" min="1" maxlength="10" >
+                    </div>                    
+                    <div class="form-group">
+                        <td>Notas adicionales</td>
+                        <textarea class="form-control" name="notas" id="txtNotas" rows="3" minlength="3"
+                            maxlength="200" placeholder="Notas adicionales"></textarea>
+                    </div>
+
+                    <h2>{{msg}}</h2>
+                    <p class="buttons">
+
+                        <input class="btn btn-primary" type="submit" value="Guardar">
+                        <input class="btn btn-primary" type="button" onclick="ir()" value="Lista de Compras">
+                    </p>
+                    </form>
+                </div>
+                
+            </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,116 @@
+{% extends 'core/base.html' %}
+{% load static %} {% static 'core/ ' %}
+{% block contenido %}
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+
+    {% load pwa %}
+
+    {% progressive_web_app_meta %}
+
+        <script> 
+            function mostrarBoton() { 
+                if (document.getElementById("comprado") 
+                .checked)  
+                { 
+                    document.getElementById("boton") 
+                    .style.visibility = "visible"; 
+                } else { 
+                    document.getElementById("boton") 
+                    .style.visibility = "hidden"; 
+                } 
+            } 
+        </script>
+
+        <script>
+            function modificar(producto) {
+                location.href='/modificar_vista/'+ producto +'/';
+            }
+        </script>
+        <script>
+            function completar() {
+                location.href="/completarlista/";
+            }
+        </script>
+
+                
+        <script>
+            function ir() {
+                location.href="/agregarProducto/";
+            }
+        </script>
+
+        <script>
+            function eliminar(producto) {
+                var msg;
+                var opcion = confirm("¿Desea eliminar el Producto "+ producto +" ?");
+                if (opcion == true) {
+                    location.href='/eliminar/'+ producto +'/';
+                    msg="Producto Eliminado";
+                }else{
+                    msg="Eliminacion Cancelada";
+                }
+                alert(msg);
+            }
+        </script>                 
+
+</head>         
+<div>
+    <section>
+
+    </section>      
+    <body>
+
+                
+        <h2><input class="btn btn-success" type="button" onclick="completar()" value="Completar Compra">
+            <input class="btn btn-primary" type="button" onclick="ir()" value="Agregar Producto"></h2>
+        <h2><font color=yellow size=6>{{msg}} </font></h2>
+        <table bgcolor="FFFFFF" class="table table-striped table-bordered" style="margin-top: 50px; ">
+            <tr>
+                <td>Nombre</td>
+                <td>Valor</td>
+                <td>Valor Presupuestado</td>
+                <td>Notas</td>
+                <td>Numero lista</td>
+                <td>Opciones</td>
+            </tr>
+            {% if producto %}
+            {% for item in producto %}
+                <tr>
+                    <td>{{item.nombre}}</td>
+                    <td>{{item.valor}}</td>
+                    <td>{{item.valorpresupuestado}}</td>
+                    <td>{{item.notas}}</td>
+                    <td>{{item.numeroIdentificador}}</td>
+                
+                    <td>
+                        <input class="btn btn-danger" type="button" onclick="modificar('{{item.nombre}}')" value="Modificar">
+                        <input class="btn btn-danger" type="button" onclick="eliminar('{{item.nombre}}')" value="Eliminar">
+                    </td>
+                </tr>
+            {% endfor %}
+            {% else %}
+            <h1>No hay registro de productos</h1>
+            {% endif %}
+        </table>
+        <h2><form action="{% url 'productoLista' %}" method="POST">
+        {% csrf_token %}
+            <input type="text" name="txtnumeroIdentificador" id="txtnumeroIdentificador">
+            <button class="btn btn-primary" type="submit">Filtrar por Numero de lista</button>
+        </form><h2>
+        <table bgcolor="FFFFFF" class="table table-striped table-bordered" style="margin-top: 50px;" >
+        <td>Valor Real Total: {{valortotal}}</td>
+        <td>Cantidad Total de productos : {{cantotal}}</td>
+        </table>
+    </body>
+</div>
+
+
+{% endblock contenido %}
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

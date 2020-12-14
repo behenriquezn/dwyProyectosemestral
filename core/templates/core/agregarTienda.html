@@ -1,0 +1,55 @@
+{% extends 'core/base.html' %}
+{% load static %} {% static 'core/ ' %}
+{% block contenido %}
+
+    {% load pwa %}
+
+    {% progressive_web_app_meta %}
+
+         <div id="contenidoTienda">
+            <div id="sectionTienda">
+                <div>
+                    <h2>Agregar Tiendas</h2>
+        
+                </div>
+                <div class="regTienda">
+                    <div class="form-group">
+                        <form action="{% url 'agregarTienda'%}" method="POST">
+                        {% csrf_token %}
+                            <td>Nombre de la Tienda</td>
+                            <input type="text" class="form-control" name="nombreTienda" id="txtNombreTienda"
+                                placeholder="Ingrese nombre de la Tienda" minlength="3" maxlength="120" required>
+                    </div>
+                    <div class="form-group">
+                        <td>Nombre de la sucursal</td>
+                        <input type="text" class="form-control" name="nombreSucursal" id="txtNombresucursal"
+                                placeholder="Ingrese nombre de la sucursal" minlength="3" maxlength="120" >
+                    </div>
+                    <div class="form-group">
+                        <td>Direccion de la tienda</td>
+                        <input type="text" class="form-control" name="Direccion" id="txtdireccion"
+                                placeholder="Ingrese la direccion de la tienda" minlength="3" maxlength="120" required>
+                    </div>        
+                    <div class="form-group">
+                        <td>Ciudad</td>
+                        <input type="text" class="form-control" name="Ciudad" id="txtCiudad"
+                                placeholder="Ingrese la Ciudad" minlength="3" maxlength="120" required>
+                    </div>
+                    <div class="form-group">
+                        <td>Region</td>
+                        <input type="text" class="form-control" name="Region" id="txtRegion"
+                                placeholder="Ingrese la Region" minlength="3" maxlength="120" required>
+                    </div>                       
+                    <h2>{{msg}}</h2>
+                    <p class="buttons">
+
+                        <input class="btn btn-primary" type="submit" value="Guardar" center>
+                        
+                    </p>
+                    </form>
+                </div>
+                
+            </div>
+</div>
+
+{% endblock %}

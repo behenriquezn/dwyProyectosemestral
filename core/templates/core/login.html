@@ -1,28 +1,42 @@
 {% extends 'core/base.html' %}
 {% load static %} 
 {% block contenido %}
-<div class="row">
-  <div class="col-sm-2"></div>
-  <div class="col-sm-8">
-      <h2>Ingrese los datos del Contacto</h2>
-      <div>
-          <form class="form-inline" action="" method="POST">
-              {% csrf_token %}
-              <table style="margin-bottom: 3%;">
-                  {{form}}
-              </table>
-              <input type="submit" class="btn btn-success" value="Guardar" style="margin-left: 2%;">
-              <input type="reset" class="btn btn-danger" value="Limpiar" style="margin-left: 2%;">
-              <h6>¿No tienes una Cuenta en CarWashington? <a href="{% url 'registro' %}">Ingresa Aqui</a></h6>
-              <h6>Iniciar sesion con <a href="{% url 'social:begin' 'facebook' %}">Facebook</a></h6>
-          </form>
-      </div>    
-      {{ mensaje }}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesion</title>
+</head>
+<section>
 
-  </div>    
-  <div class="col-sm-2"></div>
 
+</section>
+
+<div id="contenido">
+  <div id="sectionIngreso">
+      <h2><font color=white>Ingrese Sus Datos</font></h2>
+
+      <div class="login">
+        <h3 >Inicio de sesión</h3>
+        <font color=red size=6>{{msg}} </font>
+        <form action="" method="post">
+          {% csrf_token %}
+          <div class="form-group">
+              <td>Usuario</td>
+              <input type="text" class="form-control" name="Usuario" id="Usuario" placeholder="Escribe tu Usuario">
+          </div>
+          <div class="form-group">
+              <td>Clave</td>
+              <input type="password" class="form-control" name="Pass" id="Pass" placeholder="Escribe tu Clave">
+          </div>
+          <p class="buttons">
+              <input class="btn btn-primary" type="submit" value="Iniciar sesion">
+          </p>
+          
+          <h6>¿No tienes una cuenta? <a href="{% url 'registro' %}">Registrarse</a> </h6>
+        </form>
+      </div>
 </div>
-
-
+<section>
+  
+</section>
 {% endblock %}

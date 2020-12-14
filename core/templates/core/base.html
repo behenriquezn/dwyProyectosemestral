@@ -4,31 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CarWashington</title>
+    <title>ShopWashington</title>
     <link rel="stylesheet" href="{% static 'core\css\bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/estilo.css' %}">
     {% load pwa %}
 
     {% progressive_web_app_meta %}
 
-  <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-messaging.js"></script>
 
-  <!-- TODO: Add SDKs for Firebase products that you want to use
-      https://firebase.google.com/docs/web/setup#available-libraries -->
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+
     <script>
-      // Your web app's Firebase configuration
-      var firebaseConfig = {
-        apiKey: "AIzaSyADxtPow_hGRgxn2V5N9EYyCV1vQPKsc_c",
-        authDomain: "carwashington-76224.firebaseapp.com",
-        databaseURL: "https://carwashington-76224.firebaseio.com",
-        projectId: "carwashington-76224",
-        storageBucket: "carwashington-76224.appspot.com",
-        messagingSenderId: "90284256836",
-        appId: "1:90284256836:web:1efccbc19366a44ac15611",
-      };
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyCfs0yhmR3IHBT1AvksGfZTp0j4etfRY5s",
+        authDomain: "shopwashington-e56e1.firebaseapp.com",
+        projectId: "shopwashington-e56e1",
+        storageBucket: "shopwashington-e56e1.appspot.com",
+        messagingSenderId: "828534542162",
+        appId: "1:828534542162:web:342d9495c805f37a8ab48b"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
       //////////////////////////////////////////
       let messaging = firebase.messaging();
 
@@ -73,80 +74,94 @@
     	})
     </script>
 
-    <link rel="stylesheet" href="{% static 'core/css/estilo.css' %}">
 
 </head>
+<style>
+body { 
+  background-image: url("{% static 'core/img/carrito.jpg' %}");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  
+  background-size: cover;
+}
+</style>
+<body >
 
-<body>
-    <header>
         <nav class="navbar navbar-expand-lg navbar-light ">
-            <a class="navbar-brand" href="#">CarWashington</a>
-            <button class="navbar-toggler" type="button"  data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
+            <a class="navbar-brand" href="#">ShopWashington</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
               <ul class="navbar-nav">
+              {% if user.is_authenticated %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'index' %}"> Inicio </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'galeria' %}"> Galeria </a>
+          
+                 <a class="nav-link" href="{% url 'listaCompras' %}">Lista de Compras</a>
                 </li>
-                <li class="nav-item">
-                <li>
-                  <a class="nav-link" href="{% url 'quienesSomos' %}">Quienes Somos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'ubicacion' %}">Ubicación</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'formulario' %}">Lista de Usuarios</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'formularioInsumo' %}">Lista de Insumos</a>
-                  </li>
                 <li class="nav-item" >
-                    <a class="nav-link" href="{% url 'login' %}"> Login </a>
-                </li>
+                    <a class="nav-link" href="{% url 'agregarTienda' %}"> Agregar Tiendas </a>
                 <li class="nav-item" >
                   <a class="nav-link" href="{% url 'logout' %}"> Cerrar Sesión </a>
-              </li>
-              <li class="nav-item" >
-                <a class="nav-link" href="{% url 'contactoFinal' %}"> Contacto </a>
-            </li>
-                
+                </li>
+                    <li><a class="nav-link disabled" href="">Bienvenido: {{user.first_name}} {{user.last_name}}</a></li>
+                </li> 
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'index' %}"> Inicio </a>
+                </li>
+            
+                <li class="nav-item" >
+                    <a class="nav-link" href="{% url 'login' %}"> Iniciar Sesion </a>
+                </li>               
+                <li><a class="nav-link".style.visibility="hidden"  href="{% url 'social:begin' 'facebook' %}">Iniciar sesion con facebook</a></li>
+                {% endif %}
               </ul>
             </div>
           </nav>
-    </header>
-    <main>
-        <section id="banner">
-            <img src="{% static 'core/img/slider-car-splash-1087x531.jpg' %}" alt="">
-        </section>
-        {% block contenido %}
-
-        {% endblock %}
-
-    </main>
-
+<section>
+  <div style="visibility: hidden;">
+    <h1 >ESPACIO PARA QUE ARRIBA SE VEA BIEN</h1>
+  </div>
+</section>  
+        <div class="contenedor">
+          {% block contenido %}
+          {% endblock %}
+        </div>
+<section>
+  <div style="visibility: hidden;">
+    <h1 >ESPACIO PARA QUE EL FOOTER SE PONGA BIEN</h1>
+    <h1 >ESPACIO PARA QUE EL FOOTER SE PONGA BIEN</h1>
+    <h1 >ESPACIO PARA QUE EL FOOTER SE PONGA BIEN</h1>
+    <h1 >ESPACIO PARA QUE EL FOOTER SE PONGA BIEN</h1>
+    <h1 >ESPACIO PARA QUE EL FOOTER SE PONGA BIEN</h1>
+    <h1 >ESPACIO PARA QUE EL FOOTER SE PONGA BIEN</h1>
+    
+  </div>
+</section>
     <footer>
         <div class="contenedor">
-            <p><h1>CarWashington</h1></p>
+            <p><h1>ShopWashington</h1></p>
             <nav class="indice">
                 <a href="{% url 'index' %}">Inicio</a>
-                <a href="{% url 'galeria' %}">Galeria</a>
-                <a href="{% url 'quienesSomos' %}">Quienes Somos</a>
-                <a href="{% url 'ubicacion' %}">Ubicación</a>
-                <a href="{% url 'formulario' %}">Lista de Clientes</a>
-                <a href="{% url 'formularioInsumo' %}">Lista de Insumo</a>
-                
-                
-
+                {% if user.is_authenticated %}
+                <a href="{% url 'agregarTienda' %}">Agregar Tiendas</a>
+                <a href="{% url 'agregarProducto' %}">Agregar Productos</a>
+                <a href="{% url 'listaCompras' %}">Lista de Compras</a>
+                {% endif %}
             </nav>
 
         </div>
     </footer>
 
 </body>
-
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 </html>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
